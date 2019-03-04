@@ -1,5 +1,6 @@
 package com.students.studentsdemo.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.students.studentsdemo.model.Student;
@@ -16,8 +17,16 @@ public class StudentController {
   @Autowired
   private StudentRepository studentRepository;
 
+  
+  @GetMapping("/api/v1/students")
+  public List<Student> getAllStudents() {
+    return studentRepository.findAll();
+  }
+
   @GetMapping("/api/v1/students/{id}")
   public Optional<Student> getStudent(@PathVariable Long id) {
     return studentRepository.findById(id);
   }
+
+  
 }
