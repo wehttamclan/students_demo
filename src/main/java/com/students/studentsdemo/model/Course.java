@@ -18,7 +18,7 @@ public class Course {
                      initialValue = 1)
   private Long id;
 
-  @ManyToMany
+  @ManyToMany(mappedBy = "student_courses")
   Set<Student> students;
 
 }
