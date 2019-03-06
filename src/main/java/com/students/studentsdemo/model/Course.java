@@ -1,8 +1,11 @@
 package com.students.studentsdemo.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -15,5 +18,7 @@ public class Course {
                      initialValue = 1)
   private Long id;
 
+  @ManyToMany
+  Set<Student> students;
 
 }

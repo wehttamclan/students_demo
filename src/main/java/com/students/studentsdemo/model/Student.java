@@ -1,8 +1,11 @@
 package com.students.studentsdemo.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotBlank;
 
@@ -15,6 +18,9 @@ public class Student {
                      sequenceName = "student_sequence",
                      initialValue = 1)
   private Long id;
+
+  @ManyToMany
+  Set<Course> courses;
   
   @NotBlank
   private String name;
