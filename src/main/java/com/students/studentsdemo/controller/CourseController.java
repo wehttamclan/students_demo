@@ -1,6 +1,6 @@
 package com.students.studentsdemo.controller;
 
-import java.util.Optional;
+import java.util.List;
 
 import com.students.studentsdemo.model.Course;
 import com.students.studentsdemo.repository.CourseRepository;
@@ -16,8 +16,8 @@ public class CourseController {
   @Autowired
   private CourseRepository courseRepository;
 
-  @GetMapping("/api/v1/courses/{id}")
-  public Optional<Course> getCourse(@PathVariable Long id) {
-    return courseRepository.findById(id);
+  @GetMapping("/api/v1/students/{studentId}/courses")
+  public List<Course> getCoursesByStudentId(@PathVariable Long studentId) {
+    return courseRepository.findByStudentId(studentId);
   }
 }

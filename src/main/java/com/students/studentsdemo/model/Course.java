@@ -1,14 +1,17 @@
 package com.students.studentsdemo.model;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
+@Table(name = "courses")
 public class Course {
 
   @Id
@@ -19,6 +22,13 @@ public class Course {
   private Long id;
 
   @ManyToMany(mappedBy = "courses")
-  Set<Student> students;
+  private List<Student> students;
+
+  @NotBlank
+  private String name;
+
+  public void setName(String name) {
+    this.name = name;
+  }
 
 }

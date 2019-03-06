@@ -1,6 +1,6 @@
 package com.students.studentsdemo.model;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,9 +9,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
+@Table(name = "students")
 public class Student {
 
   @Id
@@ -27,7 +29,7 @@ public class Student {
     joinColumns = @JoinColumn(name = "student_id"),
     inverseJoinColumns = @JoinColumn(name = "course_id")
   )
-  Set<Course> courses;
+  private List<Course> courses;
 
   @NotBlank
   private String name;
