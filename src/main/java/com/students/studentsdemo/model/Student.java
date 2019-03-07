@@ -1,10 +1,9 @@
 package com.students.studentsdemo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -23,6 +22,15 @@ public class Student {
   @NotBlank
   private String name;
   private Long age;
+
+  @ManyToMany(
+    fetch = FetchType.LAZY, 
+    cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+  @JoinTable(
+    name = "student_courses", 
+    joinColumns = { @JoinColumn(name = "student_id") }, 
+    inverseJoinColumns = { @JoinColumn(name = "course_id") })
+  private Set<Course> courses = new HashSet<>();
 
   public Student() {
     
