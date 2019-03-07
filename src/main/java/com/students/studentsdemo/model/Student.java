@@ -10,11 +10,11 @@ import javax.validation.constraints.NotBlank;
 public class Student {
 
   @Id
-  @GeneratedValue(generator = "student_generator")
-  @SequenceGenerator(
-    name = "student_generator",
-    sequenceName = "student_sequence",
-    initialValue = 1)
+  // @GeneratedValue(generator = "student_generator")
+  // @SequenceGenerator(
+  //   name = "student_generator",
+  //   sequenceName = "student_sequence",
+  //   initialValue = 1)
   private Long id;
   
   @NotBlank
