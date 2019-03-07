@@ -6,6 +6,9 @@ import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 public class Student {
 
@@ -30,10 +33,10 @@ public class Student {
     name = "student_courses", 
     joinColumns = { @JoinColumn(name = "student_id") }, 
     inverseJoinColumns = { @JoinColumn(name = "course_id") })
+  @JsonIgnoreProperties("roster")  
   private Set<Course> courses = new HashSet<>();
 
   public Student() {
-    
   }
 
   public Student(Long id, String name, Long age) {
@@ -42,7 +45,12 @@ public class Student {
     this.name = name;
     this.age = age;
   }
-  
+
+  @JsonProperty("course_list")
+  public Set<Course> getCourses() {
+    return courses;
+  }
+
   public Long getId() {
     return id;
   }
