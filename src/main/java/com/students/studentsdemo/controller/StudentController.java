@@ -2,6 +2,7 @@ package com.students.studentsdemo.controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import com.students.studentsdemo.model.Course;
 import com.students.studentsdemo.model.Student;
@@ -54,10 +55,10 @@ public class StudentController {
     studentRepository.deleteById(id);
   }
 
-  // @GetMapping("/api/v1/students/{id}/courses")
-  // public List<Course> getCourses(@PathVariable Long id) {
-  //   return studentRepository.getCoursesByStudentId(id);
-  // }
+  @GetMapping("/api/v1/students/{studentId}/courses")
+  public List<Course> getCourses(@PathVariable Long studentId) {
+    return studentRepository.findCoursesById(studentId);
+  }
 
   @GetMapping("/api/v1/students/find")
   public List<Student> getStudentsByName(@RequestParam(value = "name") String name) {
