@@ -11,9 +11,10 @@ public class Student {
 
   @Id
   @GeneratedValue(generator = "student_generator")
-  @SequenceGenerator(name = "student_generator",
-                     sequenceName = "student_sequence",
-                     initialValue = 1)
+  @SequenceGenerator(
+    name = "student_generator",
+    sequenceName = "student_sequence",
+    initialValue = 1)
   private Long id;
   
   @NotBlank
@@ -30,19 +31,19 @@ public class Student {
     this.id = id;
   }
   
-  public void setName(String name) {
-    this.name = name;
-  }
-
   public String getName() {
     return name;
   }
   
-  public void setAge(Integer age) {
-    this.age = age;
+  public void setName(String name) {
+    this.name = name;
   }
-
+  
   public Integer getAge() {
     return age;
+  }
+  
+  public void setAge(Integer age) {
+    this.age = age;
   }
 }
