@@ -3,6 +3,7 @@ package com.students.studentsdemo.controller;
 import java.util.List;
 import java.util.Optional;
 
+import com.students.studentsdemo.model.Course;
 import com.students.studentsdemo.model.Student;
 import com.students.studentsdemo.repository.StudentRepository;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -50,5 +52,15 @@ public class StudentController {
   @DeleteMapping("/api/v1/students/{id}")
   public void deleteStudent(@PathVariable Long id) {
     studentRepository.deleteById(id);
+  }
+
+  // @GetMapping("/api/v1/students/{id}/courses")
+  // public List<Course> getCourses(@PathVariable Long id) {
+  //   return studentRepository.getCoursesByStudentId(id);
+  // }
+
+  @GetMapping("/api/v1/students/find")
+  public List<Student> getStudentsByName(@RequestParam(value = "name") String name) {
+    return studentRepository.findByName(name);
   }
 }
